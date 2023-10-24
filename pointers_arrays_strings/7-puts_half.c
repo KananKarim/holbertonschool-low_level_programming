@@ -25,6 +25,7 @@ len = len / 2;
 else
 {
 len = (len - 1) / 2;
+len++;
 }
 start += len;
 while (*start)
