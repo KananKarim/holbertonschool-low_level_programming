@@ -11,11 +11,8 @@ int main(void)
     char *s = "hello";
     char *f;
 
-    f = _strchr(s, 'l');
+    f = _strchr(s, 'a');
 
-    if (f != NULL)
-    {
-        printf("%s\n", f);
-    }
+    printf("%s\n", (f == NULL ? "nil" : f));
     return (0);
 }
