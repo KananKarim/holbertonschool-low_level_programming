@@ -3,15 +3,18 @@
 /**
  *  _puts_recursion - function
  * @s: string
- * Return
+ * Return:Nothing
  */
 
 void _puts_recursion(char *s)
 {
-	while (*s != '\0')
+	if (*s)
 	{
 		_putchar(*s);
-		s++;
+		_puts_recursion(s + 1);
 	}
-	_putchar('\n');
+	else
+	{
+		_putchar('\n');
+	}
 }
