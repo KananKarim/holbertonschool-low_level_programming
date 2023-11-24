@@ -12,9 +12,12 @@ void print_all(const char * const format, ...)
 	va_list args;
 	char *str;
 	const char *ptr;
+	
+	if (format == NULL)
+		return;
 
 	va_start(args, format);
-
+	
 	ptr = format;
 	while (*ptr)
 	{
