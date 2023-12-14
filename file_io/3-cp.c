@@ -59,7 +59,7 @@ void copyFile(int fd_from, int fd_to)
 
 		if (wr == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file\n");
+			dprintf(STDERR_FILENO, "Error: Can't write to file\n", fd_to);
 			close(fd_from);
 			close(fd_to);
 			exit(99);
@@ -68,7 +68,7 @@ void copyFile(int fd_from, int fd_to)
 
 	if (rd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file\n");
+		dprintf(STDERR_FILENO, "Error: Can't read from file\n", fd_from);
 		close(fd_from);
 		close(fd_to);
 		exit(98);
