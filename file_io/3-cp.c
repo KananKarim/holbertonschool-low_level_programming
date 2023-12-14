@@ -44,11 +44,13 @@ int openWriting(const char *filename)
 
 /**
  * copyFile - Copies data from one file descriptor to another.
+ * @f_from: filename
+ * @f_to: filename
  * @fd_from: The source file descriptor.
  * @fd_to: The destination file descriptor.
  */
 
-void copyFile(int fd_from, int fd_to)
+void copyFile(int fd_from, int fd_to, const char *f_from, const char *f_to)
 {
 	char buffer[BUFFER_SIZE];
 	ssize_t rd, wr;
@@ -59,7 +61,7 @@ void copyFile(int fd_from, int fd_to)
 
 		if (wr == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file\n", fd_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", f_to);
 			close(fd_from);
 			close(fd_to);
 			exit(99);
@@ -68,7 +70,7 @@ void copyFile(int fd_from, int fd_to)
 
 	if (rd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file\n", fd_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", f_from);
 		close(fd_from);
 		close(fd_to);
 		exit(98);
@@ -114,7 +116,7 @@ int main(int argc, char *argv[])
 
 	fd_to = openWriting(argv[2]);
 
-	copyFile(fd_from, fd_to);
+	copyFile(fd_from, fd_to, argv[1], argv[2]);
 	closeFile(fd_from, argv[1]);
 	closeFile(fd_to, argv[2]);
 
