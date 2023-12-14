@@ -61,7 +61,7 @@ void copyFile(int fd_from, int fd_to, const char *f_from, const char *f_to)
 
 		if (wr == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", f_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f_to);
 			close(fd_from);
 			close(fd_to);
 			exit(99);
